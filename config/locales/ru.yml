@@ -1,0 +1,9 @@
+ru:
+  reservation_service: 'Сервис бронирования'
+  home: 'На главную'
+  save: 'Сохранить'
+  cancel: 'Отменить'
+  hotels:
+    add: 'Добавить отель'
+    hotel: 'Отель'
+    hotels: 'Отели'

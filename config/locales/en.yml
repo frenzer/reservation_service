@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  reservation_service: 'Reservation service'
+  home: 'Home'
+  save: 'Save'
+  cancel: 'Cancel'
+  hotels:
+    add: 'Add Hotel'
+    hotel: 'Hotel'
+    hotels: 'Hotels'

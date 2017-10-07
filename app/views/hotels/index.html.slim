@@ -1,0 +1,21 @@
+.row
+  .col-md-12
+    .widget-container
+      .widget-content.padded
+        ul.perfect_list.list-unstyled
+          = link_to t('hotels.add'), new_hotel_path
+          - @hotels.each do |hotel|
+            = link_to hotel
+              li
+                table
+                  tr
+                    td.col-md-4
+                      .text-center
+                        = hotel.name
+                    td.col-md-4
+                      .description
+                        | Свободных: 10
+                        | Забронированных: 5
+                      td.col-md-1
+                        = link_to hotel_path(hotel), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do
+                          = glyph 'remove'
