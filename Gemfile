@@ -40,6 +40,7 @@ gem 'bootstrap-sass-extras'
 gem 'active_link_to'
 gem 'slim-rails'
 gem 'devise'
+gem 'draper'
 
 
 group :development, :test do
@@ -47,6 +48,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_rewinder'
 end
 
 group :development do

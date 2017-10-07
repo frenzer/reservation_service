@@ -1,0 +1,18 @@
+ru:
+  activerecord:
+    models:
+      hotel: 'Отель'
+      room: 'Комната'
+    attributes:
+      hotel:
+        name: 'Название'
+        room_count: 'Количество комнат'
+      room:
+        name: 'Название'
+        reserved: 'Зарезервировано'
+    errors:
+      models:
+        hotel:
+          attributes:
+            name:
+              blank: 'Не может быть пустым'

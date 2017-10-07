@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      hotel: 'Hotel'
+      room: 'Room'
+    attributes:
+      hotel:
+        name: 'Name'
+        room_count: 'Room count'
+      room:
+        name: 'Name'
+        reserved: 'Reserved'

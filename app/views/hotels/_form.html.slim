@@ -1,8 +1,13 @@
-= form_for @hotel, html: { class: "form-horizontal" } do |f|
+= form_for @hotel, html: { class: 'form-horizontal' } do |f|
+  = render partial: 'shared/errors', locals: {object: @hotel}
   .form-group
-    = f.label :Name, class: 'control-label col-md-2'
+    = f.label :name, class: 'control-label col-md-2'
     .col-md-10
       = f.text_field :name, class: 'text_field form-control'
+  .form-group
+    = f.label :room_count, class: 'control-label col-md-2'
+    .col-md-10
+      = f.number_field :room_count, class: 'text_field form-control'
   .form-group
     .col-md-offset-2.col-md-10
       = f.submit nil, class: 'btn btn-primary'
