@@ -14,9 +14,9 @@
                         = hotel.name
                     td.col-md-4
                       .description
-                        = "Свободно номеров: #{hotel.free_room_count}"
+                        = "#{t('hotels.free_rooms')} #{hotel.free_room_count}"
                         | &nbsp;
-                        = "Забронированно: #{hotel.reserved_room_count}"
+                        = "#{t('hotels.reserved_rooms')} #{hotel.reserved_room_count}"
                       td.col-md-1
-                        = link_to hotel_path(hotel), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do
+                        = link_to hotel_path(hotel), method: :delete, data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-xs', title: "#{ t('helpers.links.destroy') }" do
                           = glyph 'remove'

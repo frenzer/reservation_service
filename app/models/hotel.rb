@@ -8,4 +8,8 @@ class Hotel < ApplicationRecord
   def reserved_room_count
     room_count - free_room_count
   end
+
+  def update_free_rooms_count
+    update(free_room_count: rooms.where(reserved: false).count)
+  end
 end

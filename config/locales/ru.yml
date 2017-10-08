@@ -7,9 +7,11 @@ ru:
     add: 'Добавить отель'
     hotel: 'Отель'
     hotels: 'Отели'
-    reserved_rooms: 'Забронированных номеров'
-    free_rooms: 'Свободных номеров'
+    reserved_rooms: 'Забронированных номеров:'
+    free_rooms: 'Свободных номеров:'
   rooms:
     room: 'Номер'
     reserved: 'Забронирован'
     free: 'Свободен'
+    reserve: 'Забронировать'
+    cancel_reservation: 'Снять бронь'

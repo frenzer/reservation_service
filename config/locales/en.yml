@@ -38,9 +38,11 @@ en:
     add: 'Add Hotel'
     hotel: 'Hotel'
     hotels: 'Hotels'
-    reserved_rooms: 'Reserved rooms'
-    free_rooms: 'Free rooms'
+    reserved_rooms: 'Reserved rooms:'
+    free_rooms: 'Free rooms:'
   rooms:
     room: 'Room'
     reserved: 'Reserved'
     free: 'Free'
+    reserve: 'Reserve'
+    cancel_reservation: 'Cancel reservation'

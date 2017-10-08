@@ -9,7 +9,7 @@ ru:
         room_count: 'Количество комнат'
       room:
         name: 'Название'
-        reserved: 'Зарезервировано'
+        reserved: 'Забронировано'
     errors:
       models:
         hotel:
