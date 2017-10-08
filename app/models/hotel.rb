@@ -5,6 +5,8 @@ class Hotel < ApplicationRecord
   validates :room_count, presence: true, numericality: { greater_than_or_equal_to: 1 }
   validates :free_room_count, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
+  scope :by_free_count_desc, -> { order(free_room_count: :desc) }
+
   def reserved_room_count
     room_count - free_room_count
   end

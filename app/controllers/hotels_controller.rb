@@ -1,8 +1,9 @@
 class HotelsController < ApplicationController
+  before_action :authenticate_user!, except: :index
   before_action :set_hotel, only: [:show, :destroy]
 
   def index
-    @hotels = Hotel.all
+    @hotels = Hotel.all.by_free_count_desc
   end
 
   def show

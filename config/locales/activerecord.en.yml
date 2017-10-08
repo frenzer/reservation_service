@@ -10,3 +10,25 @@ en:
       room:
         name: 'Name'
         reserved: 'Reserved'
+      user:
+        firstname: 'Firstname'
+        lastname: 'Lastname'
+        email: 'Email'
+        password: 'Password'
+    errors:
+      models:
+        user:
+          attributes:
+            firstname:
+              blank: "Can't be blank"
+            lastname:
+              blank: "Can't be blank"
+            email:
+              taken: 'Already taken'
+              blank: "Can't be blank"
+            password:
+              blank: "Can't be blank"
+        hotel:
+          attributes:
+            name:
+              blank: "Can't be blank"

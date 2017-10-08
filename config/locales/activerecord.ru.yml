@@ -10,8 +10,27 @@ ru:
       room:
         name: 'Название'
         reserved: 'Забронировано'
+      user:
+        firstname: 'Имя'
+        lastname: 'Фамилия'
+        email: 'Email'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
     errors:
       models:
+        user:
+          attributes:
+            firstname:
+              blank: 'Не может быть пустым'
+            lastname:
+              blank: 'Не может быть пустым'
+            email:
+              taken: 'Занят'
+              blank: 'Не может быть пустым'
+            password:
+              blank: 'Не может быть пустым'
+            password_confirmation:
+              confirmation: 'Не совпадает'
         hotel:
           attributes:
             name:

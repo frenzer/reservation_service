@@ -20,13 +20,23 @@ html
             li
               = active_link_to t('home'), root_path, wrap_tag: :li, active: [['hotels'], ['index', 'show', 'edit']]
           ul.nav.navbar-nav.pull-right
-            li
-              | User Info/Log In
-            li
-              | Log Out/Sign Up
+            - if user_signed_in?
+              li.name
+                = current_user.full_name
+              li
+                = link_to 'Log Out', destroy_user_session_path, method: :delete
+            - else
+              li
+                = link_to 'Log In', new_user_session_path
+              li
+                = link_to 'Sign Up', new_user_registration_path
 
     .container
       .row
         .col-md-12
           /= bootstrap_flash
+          - if notice
+            p.alert.alert-success = notice
+          - if alert
+            p.alert.alert-danger = alert
           = yield
