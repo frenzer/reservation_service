@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :rememberable, :trackable, :validatable
 
   has_many :rooms
+  has_many :comments
 
   #validates :email, presence: true, uniqueness: true
   validates_presence_of :firstname, :lastname #, :password

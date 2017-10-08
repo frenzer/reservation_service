@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :hotels
   resources :rooms, only: :show do
+    resources :comments, except: [:index, :show]
     member do
       get :reserve
       get :cancel_reservation

@@ -10,7 +10,7 @@ module RoomReservation
 
   def cancel_reservation(room)
     return false unless room.reserved?
-    room.update(reserved: false)
+    room.update(reserved: false, user: nil)
     room.hotel.update_free_rooms_count
     true
   end

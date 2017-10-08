@@ -8,4 +8,8 @@ class RoomDecorator < Draper::Decorator
   def reservation_status
     reserved? ? I18n.t('rooms.reserved') : I18n.t('rooms.free')
   end
+
+  def reserved_by?(_user)
+    user == _user
+  end
 end

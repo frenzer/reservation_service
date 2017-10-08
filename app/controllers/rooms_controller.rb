@@ -3,6 +3,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = @room.decorate
+    @comments = @room.comments
   end
 
   def reserve
