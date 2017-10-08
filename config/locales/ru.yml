@@ -12,6 +12,7 @@ ru:
   rooms:
     room: 'Номер'
     reserved: 'Забронирован'
+    reserved_by_you: 'Забронирован Вами'
     free: 'Свободен'
     reserve: 'Забронировать'
     cancel_reservation: 'Снять бронь'

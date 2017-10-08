@@ -3,7 +3,8 @@
     .widget-container
       .widget-content.padded
         ul.perfect_list.list-unstyled
-          = link_to t('hotels.add'), new_hotel_path
+          - if current_user&.admin?
+            = link_to t('hotels.add'), new_hotel_path
           - @hotels.each do |hotel|
             = link_to hotel
               li
@@ -18,5 +19,6 @@
                         | &nbsp;
                         = "#{t('hotels.reserved_rooms')} #{hotel.reserved_room_count}"
                       td.col-md-1
-                        = link_to hotel_path(hotel), method: :delete, data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-xs', title: "#{ t('helpers.links.destroy') }" do
-                          = glyph 'remove'
+                        - if current_user&.admin?
+                          = link_to hotel_path(hotel), method: :delete, data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-xs', title: "#{ t('helpers.links.destroy') }" do
+                            = glyph 'remove'

@@ -1,28 +1,32 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_room, only: [:show, :reserve, :cancel_reservation]
 
   def show
+    @room = @room.decorate
   end
 
   def reserve
-    if RoomReservation.reserve_room(@room)
-      redirect_to @room.hotel
+    if RoomReservation.reserve_room(@room, current_user)
+      redirect_to @room
+    else
+      redirect_back
     end
   end
 
   def cancel_reservation
     if RoomReservation.cancel_reservation(@room)
       redirect_to @room.hotel
+    else
+      redirect_back
     end
   end
 
   private
-    def set_room
-      @room = Room.find(params[:id])
-    end
+  def set_room
+    @room = Room.find(params[:id])
+  end
 
-    def room_params
-      params.require(:room).permit(:hotel_id, :room_number, :reserved)
-    end
+  def room_params
+    params.require(:room).permit(:hotel_id, :room_number, :reserved)
+  end
 end

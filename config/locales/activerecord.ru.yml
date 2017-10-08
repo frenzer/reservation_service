@@ -2,7 +2,7 @@ ru:
   activerecord:
     models:
       hotel: 'Отель'
-      room: 'Комната'
+      room: 'Номер'
     attributes:
       hotel:
         name: 'Название'

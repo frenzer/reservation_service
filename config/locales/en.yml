@@ -43,6 +43,7 @@ en:
   rooms:
     room: 'Room'
     reserved: 'Reserved'
+    reserved_by_you: 'Reserved by you'
     free: 'Free'
     reserve: 'Reserve'
     cancel_reservation: 'Cancel reservation'

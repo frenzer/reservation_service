@@ -2,9 +2,10 @@
 div class="page-header"
   h1 =@hotel.name
 
-.form-group
-  = link_to t('.destroy', default: t('helpers.links.destroy')), hotel_path(@hotel),
-          method: 'delete', data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-danger'
+- if current_user.admin?
+  .form-group
+    = link_to t('.destroy', default: t('helpers.links.destroy')), hotel_path(@hotel),
+            method: 'delete', data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-danger'
 
 .row
   .col-md-12
@@ -23,4 +24,5 @@ div class="page-header"
                       .description
                         = room.reservation_status
                       td.col-md-1
-                        = reserve_link(room)
+                        - if room.reserved? && current_user.admin?
+                          = link_to t('rooms.cancel_reservation'), cancel_reservation_room_path(room)
