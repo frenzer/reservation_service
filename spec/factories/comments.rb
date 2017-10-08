@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :comment do
-    room nil
-    user nil
-    body "MyString"
+    body "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+
+    association :room, factory: :room
+    association :user, factory: :user
   end
 end

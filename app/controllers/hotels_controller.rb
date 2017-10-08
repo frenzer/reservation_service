@@ -1,5 +1,6 @@
 class HotelsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :check_access!, only: [:new, :create, :destroy]
   before_action :set_hotel, only: [:show, :destroy]
 
   def index
@@ -18,7 +19,7 @@ class HotelsController < ApplicationController
     @hotel = Hotel.new(hotel_params)
 
     respond_to do |format|
-      if HotelBuilder.new(@hotel).save
+      if Builders::HotelBuilder.new(@hotel).save
         format.html { redirect_to @hotel, notice: 'Hotel was successfully created.' }
       else
         format.html { render :new }

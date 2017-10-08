@@ -2,7 +2,7 @@ module RoomReservation
   module_function
 
   def reserve_room(room, user)
-    return false if room.reserved?
+    return false if room.reserved? || user.admin?
     room.update(reserved: true, user: user)
     room.hotel.update_free_rooms_count
     true
