@@ -1,7 +1,7 @@
 class Room < ApplicationRecord
   belongs_to :hotel
   belongs_to :user, optional: true
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   scope :order_by_reserved_and_name, -> { order(reserved: :asc, room_number: :asc) }
 

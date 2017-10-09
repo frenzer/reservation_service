@@ -1,24 +1,7 @@
 .row
-  .col-md-12
-    .widget-container
-      .widget-content.padded
-        ul.perfect_list.list-unstyled
-          - if is_admin?
-            = link_to t('hotels.add'), new_hotel_path
-          - @hotels.each do |hotel|
-            = link_to hotel
-              li
-                table
-                  tr
-                    td.col-md-4
-                      .text-center
-                        = hotel.name
-                    td.col-md-4
-                      .description
-                        = "#{t('hotels.free_rooms')} #{hotel.free_room_count}"
-                        | &nbsp;
-                        = "#{t('hotels.reserved_rooms')} #{hotel.reserved_room_count}"
-                      td.col-md-1
-                        - if is_admin?
-                          = link_to hotel_path(hotel), method: :delete, data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-xs', title: "#{ t('helpers.links.destroy') }" do
-                            = glyph 'remove'
+  .col-md-8.col-md-offset-2
+    - if is_admin?
+      .ho-create-link
+        = link_to t('hotels.add'), new_hotel_path, class: 'btn-sm btn-primary'
+    - @hotels.each do |hotel|
+      = render partial: 'hotels/hotel', locals: { hotel: hotel }

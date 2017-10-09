@@ -1,0 +1,11 @@
+.b-widget
+  .b-widget-head
+    = link_to hotel.name, hotel
+    .b-widget-head-action
+      - if is_admin?
+        = link_to t('helpers.links.destroy'), hotel_path(hotel), method: 'delete',
+                data: { confirm: t('helpers.links.confirm') }
+  .b-widget-content
+    = "#{t('hotels.free_rooms')} #{hotel.free_room_count}"
+    br
+    = "#{t('hotels.reserved_rooms')} #{hotel.reserved_room_count}"

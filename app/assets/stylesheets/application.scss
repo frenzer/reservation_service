@@ -1,6 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "style";
+@import "rooms";
 
 body {
   color: #2c3e50;
@@ -35,4 +35,57 @@ body {
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav .active a:hover {
   color: #ffffff;
   background-color: #1a242f;
+}
+
+
+.b-widget {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  margin-bottom: 15px;
+  word-wrap: break-word !important;
+  @include clearfix;
+
+  &.fixed {
+    top: 50px;
+  }
+
+  &-head {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 8px 120px 8px 8px;
+    font-size: 15px;
+    background: #486684;
+    color: #ffffff;
+
+    a {
+      color: #ffffff;
+
+      &:hover {
+        color: #18bc9c;
+      }
+    }
+
+    &-action {
+      position: absolute;
+      right: 10px;
+      top: 7px;
+
+      time {
+        font-size: 13px;
+        color: #505050;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &-content {
+    line-height: 16px;
+    padding: 10px;
+    overflow-x: auto;
+  }
+}
+
+.ho-create-link {
+  margin-left: 44%;
+  height: 25px;
 }

@@ -1,28 +1,12 @@
-- model_class = Hotel
-div class="page-header"
-  h1 =@hotel.name
-
-- if current_user.admin?
-  .form-group
-    = link_to t('.destroy', default: t('helpers.links.destroy')), hotel_path(@hotel),
-            method: 'delete', data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-danger'
-
 .row
-  .col-md-12
-    .widget-container
-      .widget-content.padded
-        ul.perfect_list.list-unstyled
-          - @rooms.each do |room|
-            = link_to room
-              li
-                table
-                  tr
-                    td.col-md-4
-                      .text-center
-                        = room.name
-                    td.col-md-4
-                      .description
-                        = room.reservation_status
-                      td.col-md-1
-                        - if room.reserved? && current_user.admin?
-                          = link_to t('rooms.cancel_reservation'), cancel_reservation_room_path(room)
+  .col-md-8.col-md-offset-2
+    = render partial: 'hotels/hotel', locals: { hotel: @hotel }
+    - @rooms.each do |room|
+      .b-widget
+        .b-widget-head
+          = link_to "#{room.name} - #{room.reservation_status}", room
+          .b-widget-head-action
+            - if room.reserved? && current_user.admin?
+              = link_to t('rooms.cancel_reservation'), cancel_reservation_room_path(room)
+        /.b-widget-content
+

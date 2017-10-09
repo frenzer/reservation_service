@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = @room.decorate
-    @comments = @room.comments
+    @comments = @room.comments.includes(:user).order_created_desc
   end
 
   def reserve

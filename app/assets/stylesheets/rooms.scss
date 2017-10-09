@@ -1,3 +1,24 @@
-// Place all the styles related to the Rooms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.ro-message {
+  margin: 10px 0;
+  border-bottom: 1px solid #e6e6e6;
+  @include clearfix;
+  &-info {
+    @include clearfix;
+  }
+
+  &-time {
+    float: right;
+    color: #505050;
+    font-size: 12px;
+    margin-top: -15px;
+  }
+
+  &-content {
+    float: left;
+  }
+
+  &-actions {
+    float: left;
+    margin-left: -5px;
+  }
+}

@@ -1,32 +1,33 @@
-div class="page-header"
-  h1
-    = @room.name
-    | &nbsp;
-    = @room.reservation_status
-
-.form-group
-  = reservation_link(@room)
-
-| Comments
-- if @room.reserved_by?(current_user)
-  = link_to 'Add comment', new_room_comment_path(@room)
-- model_class = Comment
-table.table.table-striped
-  thead
-    tr
-      th= model_class.human_attribute_name(:user_id)
-      th= model_class.human_attribute_name(:body)
-      th= model_class.human_attribute_name(:created_at)
-      th=t '.actions', default: t("helpers.actions")
-  tbody
-    - @comments.each do |comment|
-      tr
-        td= comment.user.full_name
-        td= comment.body
-        td= format_date comment.created_at
-        td
-          - if current_user.admin? || comment.author?(current_user)
-            = link_to edit_room_comment_path(@room, comment), class: 'btn btn-xs', title: t('helpers.links.edit') do
-              = glyph 'pencil'
-            = link_to room_comment_path(@room, comment), method: :delete, data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-xs', title: t('helpers.links.destroy') do
-              = glyph 'remove'
+.row
+  .col-md-8.col-md-offset-2
+    = render partial: 'hotels/hotel', locals: { hotel: @room.hotel }
+    .b-widget
+      .b-widget-head
+        = "#{@room.name} - #{@room.reservation_status}"
+        .b-widget-head-action
+          = reservation_link(@room)
+    .b-widget
+      .b-widget-head
+        = "Комментарии (#{@comments.count})"
+        .b-widget-head-action
+          - if @room.reserved_by?(current_user) || is_admin?
+            = link_to 'Add comment', new_room_comment_path(@room)
+      .b-widget-content
+        ul.list-unstyled
+          - @comments.each do |comment|
+            li
+              .ro-message
+                .ro-message-info
+                  .ro-message-name
+                    = comment.user.full_name
+                  .ro-message-time
+                    = format_date comment.created_at
+                .ro-message-content
+                  = comment.body
+                - if is_admin? || comment.author?(current_user)
+                  br
+                  .ro-message-actions
+                    = link_to t('helpers.links.edit'), edit_room_comment_path(@room, comment), class: 'btn btn-xs', title: t('helpers.links.edit')
+                    = link_to t('helpers.titles.delete'), room_comment_path(@room, comment),
+                            method: :delete, data: { confirm: t('helpers.links.confirm') },
+                            class: 'btn btn-xs', title: t('helpers.links.destroy')
