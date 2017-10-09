@@ -2,7 +2,7 @@
   .b-widget-head
     = link_to hotel.name, hotel
     .b-widget-head-action
-      - if is_admin?
+      - if can? :destroy, hotel
         = link_to t('helpers.links.destroy'), hotel_path(hotel), method: 'delete',
                 data: { confirm: t('helpers.links.confirm') }
   .b-widget-content
