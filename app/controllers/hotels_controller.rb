@@ -1,6 +1,6 @@
 class HotelsController < ApplicationController
+  load_and_authorize_resource except: :index
   skip_before_action :authenticate_user!, only: :index
-  before_action :check_access!, only: [:new, :create, :destroy]
   before_action :set_hotel, only: [:show, :destroy]
 
   def index
@@ -31,7 +31,6 @@ class HotelsController < ApplicationController
     @hotel.destroy
     respond_to do |format|
       format.html { redirect_to hotels_url, notice: 'Hotel was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

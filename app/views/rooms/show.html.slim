@@ -10,7 +10,7 @@
       .b-widget-head
         = "Комментарии (#{@comments.count})"
         .b-widget-head-action
-          - if @room.reserved_by?(current_user) || is_admin?
+          - if can? :create_comment, @room
             = link_to t('comments.add'), new_room_comment_path(@room)
       .b-widget-content
         ul.list-unstyled
@@ -24,10 +24,11 @@
                     = format_date comment.created_at
                 .ro-message-content
                   = comment.body
-                - if is_admin? || comment.author?(current_user)
-                  br
-                  .ro-message-actions
+                br
+                .ro-message-actions
+                  - if can? :edit, comment
                     = link_to t('helpers.links.edit'), edit_room_comment_path(@room, comment), class: 'btn btn-xs', title: t('helpers.links.edit')
+                  - if can? :update, comment
                     = link_to t('helpers.titles.delete'), room_comment_path(@room, comment),
                             method: :delete, data: { confirm: t('helpers.links.confirm') },
                             class: 'btn btn-xs', title: t('helpers.links.destroy')

@@ -1,7 +1,6 @@
 class RoomsController < ApplicationController
-  before_action :check_access!, only: [:cancel_reservation]
+  load_and_authorize_resource
   before_action :set_room, only: [:show, :reserve, :cancel_reservation]
-  before_action :check_access!, only: :cancel_reservation
 
   def show
     @room     = @room.decorate
@@ -9,20 +8,22 @@ class RoomsController < ApplicationController
   end
 
   def reserve
-    return redirect_back(fallback_location: room_path(@room)) if is_admin?
+    authorize! :reserve, @room
 
     if RoomReservation.reserve_room(@room, current_user)
       redirect_to @room
     else
-      redirect_back fallback_location: room_path(@room)
+      redirect_to @room, alert: 'An error occurred during reservation'
     end
   end
 
   def cancel_reservation
+    authorize! :cancel_reservation, @room
+
     if RoomReservation.cancel_reservation(@room)
       redirect_to @room.hotel
     else
-      redirect_back fallback_location: room_path(@room)
+      redirect_to @room, alert: 'An error occurred during canceling reservation'
     end
   end
 

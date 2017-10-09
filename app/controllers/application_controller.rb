@@ -4,13 +4,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_admin?
 
-  def is_admin?
-    signed_in? ? current_user.admin : false
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.html { redirect_to root_url, alert: exception.message }
+    end
   end
 
-  protected
-
-  def check_access!
-    redirect_to root_path, alert: 'Access denied' unless is_admin?
+  def is_admin?
+    signed_in? ? current_user.admin : false
   end
 end

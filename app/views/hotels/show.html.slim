@@ -6,7 +6,6 @@
         .b-widget-head
           = link_to "#{room.name} - #{room.reservation_status}", room
           .b-widget-head-action
-            - if room.reserved? && current_user.admin?
+            - if can?(:cancel_reservation, room) && room.reserved?
               = link_to t('rooms.cancel_reservation'), cancel_reservation_room_path(room)
-        /.b-widget-content
 

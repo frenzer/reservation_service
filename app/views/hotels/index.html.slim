@@ -1,6 +1,6 @@
 .row
   .col-md-8.col-md-offset-2
-    - if is_admin?
+    - if can? :create, Hotel
       .ho-create-link
         = link_to t('hotels.add'), new_hotel_path, class: 'btn-sm btn-primary'
     - @hotels.each do |hotel|

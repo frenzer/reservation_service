@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource except: [:new, :create]
   before_action :set_room
+  before_action :authorize_create_comment, only: [:new, :create]
   before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :check_access!, only: [:edit, :update, :destroy]
 
   def new
     @comment = Comment.new
@@ -42,9 +43,9 @@ class CommentsController < ApplicationController
   end
 
   private
-  def check_access!
-    return if is_admin? || current_user == @comment.user
-    redirect_to root_path, alert: 'Access denied'
+
+  def authorize_create_comment
+    authorize! :create_comment, @room
   end
 
   def set_room

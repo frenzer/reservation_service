@@ -35,7 +35,7 @@ RSpec.describe 'Rooms as User', type: :request do
       }.not_to change(reserved_room, :reserved)
     end
 
-    it 'should redirect with access error'  do
+    it 'should redirect with access error' do
       expect(request).to redirect_to root_url
     end
   end

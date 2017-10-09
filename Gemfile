@@ -40,7 +40,9 @@ gem 'bootstrap-sass-extras'
 gem 'active_link_to'
 gem 'slim-rails'
 gem 'devise'
+gem 'cancancan', '~> 2.0'
 gem 'draper'
+gem 'draper-cancancan'
 
 
 group :development, :test do

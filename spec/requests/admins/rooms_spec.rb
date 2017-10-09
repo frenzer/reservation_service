@@ -13,7 +13,6 @@ RSpec.describe 'Rooms as Admin', type: :request do
   end
 
   describe '#reserve' do
-    let(:prev_url) { room_url(room) }
     let(:request) { get reserve_room_path(room) }
 
     it 'should not reserve room' do
@@ -23,8 +22,8 @@ RSpec.describe 'Rooms as Admin', type: :request do
       }.not_to change(room, :reserved)
     end
 
-    it 'should redirect back' do
-      expect(request).to redirect_to prev_url
+    it 'should redirect with access error' do
+      expect(request).to redirect_to root_path
     end
   end
 
