@@ -4,11 +4,13 @@ class RoomsController < ApplicationController
   before_action :check_access!, only: :cancel_reservation
 
   def show
-    @room = @room.decorate
+    @room     = @room.decorate
     @comments = @room.comments.includes(:user).order_created_desc
   end
 
   def reserve
+    return redirect_back(fallback_location: room_path(@room)) if is_admin?
+
     if RoomReservation.reserve_room(@room, current_user)
       redirect_to @room
     else
