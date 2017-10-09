@@ -34,6 +34,7 @@ en:
   home: 'Home'
   save: 'Save'
   cancel: 'Cancel'
+  log_out: 'Log out'
   hotels:
     add: 'Add Hotel'
     hotel: 'Hotel'
@@ -47,3 +48,5 @@ en:
     free: 'Free'
     reserve: 'Reserve'
     cancel_reservation: 'Cancel reservation'
+  comments:
+      add: 'Добавить комментарий'

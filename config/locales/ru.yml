@@ -3,6 +3,7 @@ ru:
   home: 'На главную'
   save: 'Сохранить'
   cancel: 'Отменить'
+  log_out: 'Выйти'
   hotels:
     add: 'Добавить отель'
     hotel: 'Отель'
@@ -16,3 +17,5 @@ ru:
     free: 'Свободен'
     reserve: 'Забронировать'
     cancel_reservation: 'Снять бронь'
+  comments:
+    add: 'Добавить комментарий'

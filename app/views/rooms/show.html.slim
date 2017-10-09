@@ -11,7 +11,7 @@
         = "Комментарии (#{@comments.count})"
         .b-widget-head-action
           - if @room.reserved_by?(current_user) || is_admin?
-            = link_to 'Add comment', new_room_comment_path(@room)
+            = link_to t('comments.add'), new_room_comment_path(@room)
       .b-widget-content
         ul.list-unstyled
           - @comments.each do |comment|
