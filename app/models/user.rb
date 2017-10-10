@@ -7,10 +7,9 @@ class User < ApplicationRecord
   has_many :rooms
   has_many :comments
 
-  #validates :email, presence: true, uniqueness: true
-  validates_presence_of :firstname, :lastname #, :password
+  validates_presence_of :firstname, :lastname
 
   def full_name
-    [firstname, lastname].compact.join(' ')
+    [firstname, lastname].join(' ')
   end
 end

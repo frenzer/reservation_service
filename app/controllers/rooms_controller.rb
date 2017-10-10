@@ -8,8 +8,6 @@ class RoomsController < ApplicationController
   end
 
   def reserve
-    authorize! :reserve, @room
-
     if RoomReservation.reserve_room(@room, current_user)
       redirect_to @room
     else
@@ -18,8 +16,6 @@ class RoomsController < ApplicationController
   end
 
   def cancel_reservation
-    authorize! :cancel_reservation, @room
-
     if RoomReservation.cancel_reservation(@room)
       redirect_to @room.hotel
     else

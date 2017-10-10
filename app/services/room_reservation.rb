@@ -2,16 +2,24 @@ module RoomReservation
   module_function
 
   def reserve_room(room, user)
-    return false if room.reserved?
-    room.update(reserved: true, user: user)
-    room.hotel.update_free_rooms_count
-    true
+    return_value = false
+    return return_value if room.reserved?
+    ApplicationRecord.transaction do
+      raise ActiveRecord::Rollback unless room.update(reserved: true, user: user)
+      raise ActiveRecord::Rollback unless room.hotel.update_free_rooms_count
+      return_value = true
+    end
+    return_value
   end
 
   def cancel_reservation(room)
-    return false unless room.reserved?
-    room.update(reserved: false, user: nil)
-    room.hotel.update_free_rooms_count
-    true
+    return_value = false
+    return return_value unless room.reserved?
+    ApplicationRecord.transaction do
+      raise ActiveRecord::Rollback unless room.update(reserved: false, user: nil)
+      raise ActiveRecord::Rollback unless room.hotel.update_free_rooms_count
+      return_value = true
+    end
+    return_value
   end
 end
